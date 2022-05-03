@@ -69,26 +69,24 @@ export default function Weather() {
               </h2>
               <br />
               <div className="container">
-                <div className="row">
-                  <div className="row justify-content-center">
-                    <div className="col-4">
-                      <div className="col highs">
-                        <strong>Highs</strong>
-                      </div>
-                      <span className="high-temp" id="high-temp">
-                        {weatherData.tempHighs}
-                      </span>
-                      ºF
+                <div className="row justify-content-center">
+                  <div className="col-4">
+                    <div className="col highs">
+                      <strong>Highs</strong>
                     </div>
-                    <div className="col-4">
-                      <div className="col lows">
-                        <strong>Lows</strong>
-                      </div>
-                      <span className="low-temp" id="low-temp">
-                        {weatherData.tempLows}
-                      </span>
-                      ºF
+                    <span className="high-temp" id="high-temp">
+                      {weatherData.tempHighs}
+                    </span>
+                    ºF
+                  </div>
+                  <div className="col-4">
+                    <div className="col lows">
+                      <strong>Lows</strong>
                     </div>
+                    <span className="low-temp" id="low-temp">
+                      {weatherData.tempLows}
+                    </span>
+                    ºF
                   </div>
                 </div>
               </div>
