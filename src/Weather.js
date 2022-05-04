@@ -112,6 +112,12 @@ export default function Weather() {
           </div>
         </div>
       </div>
+      <p className="footer">
+        <a href="https://github.com/D4NIKA/weather-react-app">
+          Open source code
+        </a>{" "}
+        by Danika Piromgraipakd
+      </p>
     </div>
   );
 }

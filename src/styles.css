@@ -134,8 +134,8 @@ li {
   font-size: 25px;
 }
 
-footer {
-  align-items: center;
+.footer {
+  text-align: center;
 }
 
 #icons {
