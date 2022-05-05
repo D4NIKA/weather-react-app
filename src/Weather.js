@@ -15,7 +15,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       city: response.data.name,
       humidity: response.data.main.humidity,
-      icon: ("src", `icons/${response.data.weather[0].icon}.png`),
+      icon: ("src", `icons/response.data.weather[0].icon.png`),
     });
     setReady(true);
   }
@@ -61,8 +61,8 @@ export default function Weather(props) {
                 <h3 id="description">{weatherData.description}</h3>
                 <br />
                 <img
-                  src={require("./icons/03d.png")}
-                  alt="Cloudy"
+                  src={weatherData.icon}
+                  alt="Weather Icon"
                   id="icon"
                   className="icon"
                 />
