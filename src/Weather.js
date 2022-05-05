@@ -8,9 +8,14 @@ export default function Weather() {
   function handleResponse(response) {
     setWeatherData({
       temperature: Math.round(response.data.main.temp),
+      description: response.data.weather[0].description,
+      tempHighs: Math.round(response.data.main.temp_max),
+      tempLows: Math.round(response.data.main.temp_min),
+      feelsLike: response.data.main.feels_like,
       wind: response.data.main.wind.speed,
       city: response.data.name,
       humidity: response.data.main.humidity,
+      icon: ("src", `icons/${response.data.weather[0].icon}.png`),
     });
     setReady(true);
   }
@@ -55,7 +60,12 @@ export default function Weather() {
                 <br />
                 <h3 id="description">{weatherData.description}</h3>
                 <br />
-                <img src={require("./icons/03d.png")} alt="Cloudy" id="icon" />
+                <img
+                  src={require("./icons/03d.png")}
+                  alt="Cloudy"
+                  id="icon"
+                  className="icon"
+                />
                 <br />
                 <br />
                 <div className="current-temp">Current Temperature</div>
