@@ -3,16 +3,16 @@ import axios from "axios";
 import "./styles.css";
 
 export default function Weather(props) {
-  const [ready, setReady] = useState({ ready: false });
+  const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState({});
   function handleResponse(response) {
     setWeatherData({
-      temperature: Math.round(response.data.main.temp),
+      currentTemperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       tempHighs: Math.round(response.data.main.temp_max),
       tempLows: Math.round(response.data.main.temp_min),
-      feelsLike: response.data.main.feels_like,
-      wind: response.data.main.wind.speed,
+      feelsLike: Math.round(response.data.main.feels_like),
+      wind: response.data.wind.speed,
       city: response.data.name,
       humidity: response.data.main.humidity,
       icon: ("src", `icons/${response.data.weather[0].icon}.png`),
@@ -72,7 +72,9 @@ export default function Weather(props) {
                 <h2>
                   <strong>
                     <span className="temperature" id="temperature">
-                      {weatherData.currentTemperature}
+                      {Math.round(
+                        (weatherData.currentTemperature * 9) / 5 + 32
+                      )}
                     </span>
                   </strong>
                   <strong>
@@ -87,7 +89,7 @@ export default function Weather(props) {
                         <strong>Highs</strong>
                       </div>
                       <span className="high-temp" id="high-temp">
-                        {weatherData.tempHighs}
+                        {Math.round((weatherData.tempHighs * 9) / 5 + 32)}
                       </span>
                       ºF
                     </div>
@@ -96,7 +98,7 @@ export default function Weather(props) {
                         <strong>Lows</strong>
                       </div>
                       <span className="low-temp" id="low-temp">
-                        {weatherData.tempLows}
+                        {Math.round((weatherData.tempLows * 9) / 5 + 32)}
                       </span>
                       ºF
                     </div>
@@ -106,7 +108,10 @@ export default function Weather(props) {
                 <ul>
                   <li>
                     Feels Like:{" "}
-                    <span id="feels-like">{weatherData.feelsLike}</span> ºF
+                    <span id="feels-like">
+                      {Math.round((weatherData.feelsLike * 9) / 5 + 32)}
+                    </span>{" "}
+                    ºF
                   </li>
                   <li>
                     Humidity: <span id="humidity">{weatherData.humidity}</span>%
