@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./styles.css";
 import FormattedDate from "./FormattedDate";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
@@ -9,6 +10,7 @@ export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({});
   function handleResponse(response) {
     setWeatherData({
+      coord: response.data.coord,
       currentTemperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       tempHighs: Math.round(response.data.main.temp_max),
@@ -145,6 +147,10 @@ export default function Weather(props) {
               </background>
             </section>
             <br />
+            <WeatherForecast
+              coordinates={weatherData.coord}
+              icon={weatherData.icon}
+            />
             <div className="container forecast" id="forecast">
               <script src="index.js"></script>
             </div>
