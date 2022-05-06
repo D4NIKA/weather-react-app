@@ -12,10 +12,10 @@ export default function Weather(props) {
       tempHighs: Math.round(response.data.main.temp_max),
       tempLows: Math.round(response.data.main.temp_min),
       feelsLike: Math.round(response.data.main.feels_like),
-      wind: response.data.wind.speed,
+      wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       humidity: response.data.main.humidity,
-      icon: ("src", `icons/response.data.weather[0].icon.png`),
+      icon: `/icons/${response.data.weather[0].icon}.png`,
     });
     setReady(true);
   }
