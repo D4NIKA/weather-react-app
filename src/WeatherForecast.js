@@ -10,13 +10,21 @@ export default function WeatherForecast(props) {
     setLoaded(true);
   }
 
+  function day(response) {
+    let date = new Date(response.data.dt * 1000);
+    let day = date.getDay();
+    let days = ["Sun.", "Mon.", "Tues.", "Wed.", "Thurs.", "Fri.", "Sat."];
+
+    return days[day];
+  }
+
   if (loaded) {
     return (
       <div className="container forecast" id="forecast">
         <div class="row row-cols-5 row-cols-lg-5 g-2 g-lg-3">
           <div class="col">
             <div class="p-3 border bg-light">
-              <span class="days">{forecast[0].dt}</span>
+              <span class="days">{day()}</span>
               <br />
               <span class="high-temps" id="high-temps">
                 {Math.round((forecast[0].temp.max * 9) / 5 + 32)}
