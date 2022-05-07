@@ -11,10 +11,10 @@ export default function WeatherForecastDay(props) {
   }
 
   function icons() {
-    let icon = `/icons/{props.data.weather[0].icon}.png`;
-
+    let icon = `/icons/${props.data.weather[0].icon}.png`;
     return icon;
   }
+
   return (
     <div>
       <div class="p-3 border bg-light">
@@ -29,7 +29,7 @@ export default function WeatherForecastDay(props) {
         </span>
         º<br />
         <br />
-        <img src={icons} alt="icons" id="icons" />
+        <img src={icons()} alt="icons" id="icons" />
       </div>
     </div>
   );
